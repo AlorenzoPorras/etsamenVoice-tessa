@@ -1,7 +1,7 @@
 let recognition;
 const validPINs = {
-    "0071": "Adriel E.",
-    "4401": "Victor P."
+    "0071": "Adriel E. Lorenzo",
+    "4401": "Victor M. Pinedo"
 };
 
 const url = 'https://6614da0e2fc47b4cf27d3ce0.mockapi.io/Tessa';
