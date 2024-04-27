@@ -4,19 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión por Voz</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        #status { color: blue; }
-        #error { color: red; }
-    </style>
+    <!-- Agrega el CSS de Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Autenticación por Voz</h1>
-    <p>Por favor, presiona el botón y di tu PIN numérico para ingresar.</p>
-    <button onclick="startRecognition()">Hablar</button>
-    <p id="status"></p>
-    <p id="error"></p>
+<body class="bg-light">
+    <div class="container">
+        <div class="py-5 text-center">
+            <h2>Autenticación por Voz</h2>
+            <p class="lead">Por favor, presiona el botón y di tu PIN numérico para ingresar.</p>
+        </div>
 
+        <div class="row justify-content-center">
+            <div class="col-md-8 order-md-1">
+                <button class="btn btn-primary btn-lg btn-block" onclick="startRecognition()">Hablar</button>
+                <p id="status" class="text-primary"></p>
+                <p id="error" class="text-danger"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agrega el JS de Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="voiceAuth.js"></script>
 </body>
 </html>
