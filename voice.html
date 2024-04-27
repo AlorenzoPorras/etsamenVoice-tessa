@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ver Voces Disponibles</title>
+</head>
+<body>
+    <button onclick="verVoces()">Ver Voces Disponibles</button>
+
+    <script>
+        function verVoces() {
+            let synth = window.speechSynthesis;
+
+            // Espera a que las voces estén cargadas antes de obtener la lista
+            synth.onvoiceschanged = function() {
+                let voices = synth.getVoices();
+                voices.forEach(function(voice) {
+                    console.log('Nombre: ' + voice.name + ', Idioma: ' + voice.lang + ', Género: ' + voice.gender);
+                });
+            };
+        }
+    </script>
+</body>
+</html>

@@ -24,7 +24,7 @@ window.onload = function() {
         if (Object.keys(validPINs).includes(speechResult)) {
             const user = validPINs[speechResult];
             document.getElementById('status').textContent += ` - PIN correcto. Usuario: ${user}. Redirigiendo...`;
-            setTimeout(() => window.location.href = 'controlPanel.html', 2000);
+            setTimeout(() => window.location.href = 'deteccion/index.html', 2000);
 
             // Subir la información del usuario a la API
             const mexicoCityTime = new Date().toLocaleString("es-MX", {timeZone: "America/Mexico_City", hour12: true});
