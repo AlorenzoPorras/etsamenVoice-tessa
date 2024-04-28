@@ -21,18 +21,17 @@ window.onload = function() {
         const speechResult = event.results[0][0].transcript.trim();
         document.getElementById('status').textContent = `PIN detectado: ${speechResult}`;
         
-        if (Object.keys(validPINs).includes(speechResult)) {
+        if (validPINs.hasOwnProperty(speechResult)) {
             const user = validPINs[speechResult];
             document.getElementById('status').textContent += ` - PIN correcto. Usuario: ${user}. Redirigiendo...`;
             setTimeout(() => window.location.href = 'deteccion/index.html', 2000);
 
-            // Subir la información del usuario a la API
             const mexicoCityTime = new Date().toLocaleString("es-MX", {timeZone: "America/Mexico_City", hour12: true});
             const data = {
                 "user": user,
                 "fecha-hora": mexicoCityTime,
                 "id": "1",
-                "order": ""  // Asignar una cadena vacía al campo "order"
+                "order": ""
             };
             fetch(url, {
                 method: 'POST',
@@ -53,33 +52,44 @@ window.onload = function() {
         }
     };
 
-
     recognition.onerror = function(event) {
         document.getElementById('error').textContent = `Error en el reconocimiento de voz: ${event.error}`;
     };
 
+    initSpeechSynthesis();
+}
+
+function initSpeechSynthesis() {
     let synth = window.speechSynthesis;
+    let voicesLoaded = false;
 
     function speak() {
+        if (!voicesLoaded) {
+            console.log("Las voces aún no están cargadas.");
+            return;
+        }
+        
         let utterance = new SpeechSynthesisUtterance(textToSay);
         
-        // Configura la voz deseada
         let voices = synth.getVoices();
-        let spanishVoice = voices.find(voice => voice.name === 'Español (EE.UU.) Premium' && voice.lang === 'es-US-Wavenet-A');
+        let spanishVoice = voices.find(voice => voice.lang === 'es-ES' || voice.lang.startsWith('es-'));
         if (spanishVoice) {
             utterance.voice = spanishVoice;
+            console.log("Usando la voz:", spanishVoice.name);
         } else {
-            console.log("Voz 'es-US-Wavenet-A' no encontrada. Se usará la voz predeterminada.");
+            console.log("Voz española no encontrada. Se usará la voz predeterminada.");
         }
 
-        // Reproduce el mensaje de voz
         synth.speak(utterance);
     }
 
-    if (synth.onvoiceschanged !== undefined) {
-        synth.onvoiceschanged = speak;
-    } else {
+    synth.onvoiceschanged = function() {
+        voicesLoaded = true;
         speak();
+    };
+
+    if (synth.getVoices().length !== 0) {
+        voicesLoaded = true;
     }
 }
 
@@ -87,4 +97,5 @@ function startRecognition() {
     recognition.start();
     document.getElementById('status').textContent = 'Escuchando...';
     document.getElementById('error').textContent = '';
+    initSpeechSynthesis();
 }
