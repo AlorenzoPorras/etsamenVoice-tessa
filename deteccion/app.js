@@ -117,7 +117,13 @@ document.addEventListener('DOMContentLoaded', function () {
             // Cambiar la imagen de las cámaras de seguridad a apagadas
             document.getElementById('imagenCamaras').src = 'camaras_apagadas.jpg';
             insertarJson("Apagar las cámaras de seguridad");
+            
+        } else if (result.includes("ir a monitoreo")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            // Redireccionar a la página de monitoreo
+            window.location.href = '../monitoreo/index.html';
         }
+        
     };
 
     // Función para enviar los datos a la API
