@@ -22,44 +22,22 @@
     <a class="navbar-brand" href="#">Identificación de Orden</a>
 </nav>
 
-<div class="container mt-5">
-    <h1>Identificación de Órdenes por Voz</h1>
-    <h5>Esta aplicacion</h5>
-    
-    <!-- Representación visual de las órdenes -->
-    <div class="row mt-3">
-        <div class="col-6 col-md-4 col-lg-3 mb-4">
-            <h6>Luz de la recámara</h6>
-            <img id="luzRecamara" src="off.png" alt="Apagado" onclick="toggleLight('luzRecamara')">
-        </div>
-        <div class="col-6 col-md-4 col-lg-3 mb-4">
-            <h6>Luz de la sala</h6>
-            <img id="luzSala" src="off.png" alt="Apagado" onclick="toggleLight('luzSala')">
-        </div>
-        <div class="col-6 col-md-4 col-lg-3 mb-4">
-            <h6>Luces del jardín</h6>
-            <img id="lucesJardin" src="off.png" alt="Apagado" onclick="toggleLight('lucesJardin')">
-        </div>
-        <div class="col-6 col-md-4 col-lg-3 mb-4">
-            <h6>Ventilador</h6>
-            <img id="ventilador" src="off.png" alt="Apagado" onclick="toggleLight('ventilador')">
-        </div>
-        <div class="col-6 col-md-4 col-lg-3 mb-4">
-            <h6>Cortinas</h6>
-            <img id="cortinas" src="cerradas.png" alt="Cerradas" onclick="toggleCurtains('cortinas')">
-        </div>
-        <div class="col-6 col-md-4 col-lg-3 mb-4">
-            <h6>Alarma de la casa</h6>
-            <img id="alarma" src="off.png" alt="Desactivada" onclick="toggleAlarm('alarma')">
-        </div>
-        <div class="col-6 col-md-4 col-lg-3 mb-4">
-            <h6>Cámaras de seguridad</h6>
-            <img id="camaras" src="off.png" alt="Apagadas" onclick="toggleCameras('camaras')">
-        </div>
-    </div>
+<div class="container mt-4">
+    <!-- Mensaje de bienvenida -->
+    <h4 id="welcomeMessage"></h4>
+    <h6> Soy una asistente virtual la cual te puede ayudar a operar diferentes aparatos electronicos de la siguiente manera puedes interactuar conmigo. <br>
+         Los siguientes comandos de voz son las palabras claves a utilizar. Cabe mencionar que antes de cada accion debes decir "Tessa"</h6>
+<div id="orderResult" class="mt-3"></div>
+    <div id="" class="mt-3"><p>Comando de voz - <b>letra itali</b>   - Enciende/apaga la luz de la recámara (1 foco)</p></div>
+    <div id="" class="mt-3"><p>Comando de voz - <b>Abre Youtube</b> - Enciende/apaga la luz de la sala (1 foco) </p></div>
+    <div id="" class="mt-3"><p>Comando de voz - <b>Abre nueva pestaña</b> - Enciende/apaga las luces del jardín (5 focos)</p></div>
+    <div id="" class="mt-3"><p>Comando de voz - <b>Cerrar pestaña actual</b> - Enciende/apaga el ventilador (1 ventilador de techo)</p></div>
+    <div id="" class="mt-3"><p>Comando de voz - <b>Cerrar Navegador</b> - Abre/cierra las cortinas (3 cortinas)</p></div>
+    <div id="" class="mt-3"><p>Comando de voz - <b>Cerrar Navegador</b> - Activa/desactiva la alarma de la casa (1 alarma con chicharra)</p></div>
+    <div id="" class="mt-3"><p>Comando de voz - <b>Cerrar Navegador</b> - Enciende/apaga las cámaras de seguridad (3 cámaras de videovigilancia)</p></div>
 </div>
-
-<div class="container">
+    
+    <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6 qr-container">
             <h4>Código QR para Acceso</h4>
@@ -76,5 +54,6 @@
 </footer>
 
 <script src="app.js"></script>
+<script src="user.js"></script>
 </body>
 </html>

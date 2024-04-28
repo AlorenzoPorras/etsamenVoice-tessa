@@ -66,65 +66,90 @@ const processCommand = (result) => {
     let lowerCaseResult = result.toLowerCase();
     const controlTexto = document.getElementById("lastOrderText"); 
 
-    switch (true) {
-        case lowerCaseResult.includes("enciende la luz de la recámara"):
-            controlTexto.innerText = "Enciende la luz de la recámara";
-            // Aquí puedes agregar la lógica para encender la luz de la recámara
-            break;
-        case lowerCaseResult.includes("apaga la luz de la recámara"):
-            controlTexto.innerText = "Apaga la luz de la recámara";
-            // Aquí puedes agregar la lógica para apagar la luz de la recámara
-            break;
-        case lowerCaseResult.includes("enciende la luz de la sala"):
-            controlTexto.innerText = "Enciende la luz de la sala";
-            // Aquí puedes agregar la lógica para encender la luz de la sala
-            break;
-        case lowerCaseResult.includes("apaga la luz de la sala"):
-            controlTexto.innerText = "Apaga la luz de la sala";
-            // Aquí puedes agregar la lógica para apagar la luz de la sala
-            break;
-        case lowerCaseResult.includes("enciende las luces del jardín"):
-            controlTexto.innerText = "Enciende las luces del jardín";
-            // Aquí puedes agregar la lógica para encender las luces del jardín
-            break;
-        case lowerCaseResult.includes("apaga las luces del jardín"):
-            controlTexto.innerText = "Apaga las luces del jardín";
-            // Aquí puedes agregar la lógica para apagar las luces del jardín
-            break;
-        case lowerCaseResult.includes("enciende el ventilador"):
-            controlTexto.innerText = "Enciende el ventilador";
-            // Aquí puedes agregar la lógica para encender el ventilador
-            break;
-        case lowerCaseResult.includes("apaga el ventilador"):
-            controlTexto.innerText = "Apaga el ventilador";
-            // Aquí puedes agregar la lógica para apagar el ventilador
-            break;
-        case lowerCaseResult.includes("abre las cortinas"):
-            controlTexto.innerText = "Abre las cortinas";
-            // Aquí puedes agregar la lógica para abrir las cortinas
-            break;
-        case lowerCaseResult.includes("cierra las cortinas"):
-            controlTexto.innerText = "Cierra las cortinas";
-            // Aquí puedes agregar la lógica para cerrar las cortinas
-            break;
-        case lowerCaseResult.includes("activa la alarma de la casa"):
-            controlTexto.innerText = "Activa la alarma de la casa";
-            // Aquí puedes agregar la lógica para activar la alarma de la casa
-            break;
-        case lowerCaseResult.includes("desactiva la alarma de la casa"):
-            controlTexto.innerText = "Desactiva la alarma de la casa";
-            // Aquí puedes agregar la lógica para desactivar la alarma de la casa
-            break;
-        case lowerCaseResult.includes("enciende las cámaras de seguridad"):
-            controlTexto.innerText = "Enciende las cámaras de seguridad";
-            // Aquí puedes agregar la lógica para encender las cámaras de seguridad
-            break;
-        case lowerCaseResult.includes("apaga las cámaras de seguridad"):
-            controlTexto.innerText = "Apaga las cámaras de seguridad";
-            // Aquí puedes agregar la lógica para apagar las cámaras de seguridad
-            break;
-        default:
-            controlTexto.innerText = "Comando no reconocido";
-            break;
-    }
-};
+    const processCommand = (result) => {
+        let lowerCaseResult = result.toLowerCase();
+        const controlTexto = document.getElementById("lastOrderText"); 
+    
+        switch (true) {
+            case lowerCaseResult.includes("enciende la luz de la recámara"):
+                controlTexto.innerText = "Enciende la luz de la recámara";
+                toggleLightImage('luzRecamara', 'on.png');
+                break;
+            case lowerCaseResult.includes("apaga la luz de la recámara"):
+                controlTexto.innerText = "Apaga la luz de la recámara";
+                toggleLightImage('luzRecamara', 'off.png');
+                break;
+            case lowerCaseResult.includes("enciende la luz de la sala"):
+                controlTexto.innerText = "Enciende la luz de la sala";
+                toggleLightImage('luzSala', 'on.png');
+                break;
+            case lowerCaseResult.includes("apaga la luz de la sala"):
+                controlTexto.innerText = "Apaga la luz de la sala";
+                toggleLightImage('luzSala', 'off.png');
+                break;
+            case lowerCaseResult.includes("enciende las luces del jardín"):
+                controlTexto.innerText = "Enciende las luces del jardín";
+                toggleLightImage('lucesJardin', 'on.png');
+                break;
+            case lowerCaseResult.includes("apaga las luces del jardín"):
+                controlTexto.innerText = "Apaga las luces del jardín";
+                toggleLightImage('lucesJardin', 'off.png');
+                break;
+            case lowerCaseResult.includes("enciende el ventilador"):
+                controlTexto.innerText = "Enciende el ventilador";
+                toggleLightImage('ventilador', 'on.png');
+                break;
+            case lowerCaseResult.includes("apaga el ventilador"):
+                controlTexto.innerText = "Apaga el ventilador";
+                toggleLightImage('ventilador', 'off.png');
+                break;
+            case lowerCaseResult.includes("abre las cortinas"):
+                controlTexto.innerText = "Abre las cortinas";
+                toggleCurtainsImage('cortinas', 'abiertas.png');
+                break;
+            case lowerCaseResult.includes("cierra las cortinas"):
+                controlTexto.innerText = "Cierra las cortinas";
+                toggleCurtainsImage('cortinas', 'cerradas.png');
+                break;
+            case lowerCaseResult.includes("activa la alarma de la casa"):
+                controlTexto.innerText = "Activa la alarma de la casa";
+                toggleAlarmImage('alarma', 'activada.png');
+                break;
+            case lowerCaseResult.includes("desactiva la alarma de la casa"):
+                controlTexto.innerText = "Desactiva la alarma de la casa";
+                toggleAlarmImage('alarma', 'desactivada.png');
+                break;
+            case lowerCaseResult.includes("enciende las cámaras de seguridad"):
+                controlTexto.innerText = "Enciende las cámaras de seguridad";
+                toggleCamerasImage('camaras', 'encendidas.png');
+                break;
+            case lowerCaseResult.includes("apaga las cámaras de seguridad"):
+                controlTexto.innerText = "Apaga las cámaras de seguridad";
+                toggleCamerasImage('camaras', 'apagadas.png');
+                break;
+            default:
+                controlTexto.innerText = "Comando no reconocido";
+                break;
+        }
+    };
+    
+    const toggleLightImage = (elementId, imageName) => {
+        const imageElement = document.getElementById(elementId);
+        imageElement.src = imageName;
+    };
+    
+    const toggleCurtainsImage = (elementId, imageName) => {
+        const imageElement = document.getElementById(elementId);
+        imageElement.src = imageName;
+    };
+    
+    const toggleAlarmImage = (elementId, imageName) => {
+        const imageElement = document.getElementById(elementId);
+        imageElement.src = imageName;
+    };
+    
+    const toggleCamerasImage = (elementId, imageName) => {
+        const imageElement = document.getElementById(elementId);
+        imageElement.src = imageName;
+    };
+};    

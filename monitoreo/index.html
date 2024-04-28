@@ -2,16 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejecucion de ordenes</title>
+    <title>Monitoreo de ordenes</title>
     <!-- Agregamos la referencia al archivo CSS de Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Estilos personalizados */
         body {
-            padding-top: 60px; /* Ajuste para el navbar */
-            padding-bottom: 60px; /* Ajuste para el footer */
+            padding-top: 100px; /* Ajuste para el navbar */
+            padding-bottom: 100px; /* Ajuste para el footer */
+            background-color: #f8f9fa; /* Color de fondo */
+        }
+        .container {
+            max-width: 1000px; /* Ancho máximo del contenido */
+            margin: auto; /* Centrar el contenido */
+        }
+        .mb-4 {
+            margin-bottom: 1.5rem; /* Espacio entre las columnas */
+        }
+        .footer {
+            background-color: #343a40; /* Color de fondo del footer */
+            color: #ffffff; /* Color del texto del footer */
+            padding: 10px 0; /* Espaciado interno del footer */
+        }
+        .footer span {
+            font-size: 0.9rem; /* Tamaño de fuente del texto del footer */
         }
     </style>
 </head>
@@ -19,7 +34,7 @@
     <!-- Encabezado -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Mi Aplicación</a>
+            <a class="navbar-brand" href="#">Tessa</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -30,21 +45,55 @@
         </div>
     </nav>
 
-<!-- Contenido principal -->
-<div class="container mt-5">
-    <h2>Última orden</h2>
-    <div class="border border-md p-3">
-        <p><strong>Texto de la última orden:</strong></p>
-        <p id="lastOrderText"></p>
+    <!-- Contenido principal -->
+    <div class="container mt-5">
+        <h2 class="text-center">Ordenes</h2>
+        <div class="border border-md p-3 text-center">
+            <p><strong>Ultima orden solicitada:</strong></p>
+            <p id="lastOrderText"></p>
+        </div>
+
+<!-- Representación visual de las órdenes -->
+<div class="row mt-3">
+    <div class="col-6 col-md-4 mb-4">
+        <h6 class="text-center">Luz de la recámara</h6>
+        <img id="luzRecamara" src="off.png" alt="Apagado" class="mx-auto d-block" onclick="toggleLight('luzRecamara')">
+    </div>
+    <div class="col-6 col-md-4 mb-4">
+        <h6 class="text-center">Luz de la sala</h6>
+        <img id="luzSala" src="off.png" alt="Apagado" class="mx-auto d-block" onclick="toggleLight('luzSala')">
+    </div>
+    <div class="col-6 col-md-4 mb-4">
+        <h6 class="text-center">Luces del jardín</h6>
+        <img id="lucesJardin" src="off.png" alt="Apagado" class="mx-auto d-block" onclick="toggleLight('lucesJardin')">
+    </div>
+    <div class="col-6 col-md-4 mb-4">
+        <h6 class="text-center">Ventilador</h6>
+        <img id="ventilador" src="off.png" alt="Apagado" class="mx-auto d-block" onclick="toggleLight('ventilador')">
+    </div>
+    <div class="col-6 col-md-4 mb-4">
+        <h6 class="text-center">Cortinas</h6>
+        <img id="cortinas" src="cerradas.png" alt="Cerradas" class="mx-auto d-block" onclick="toggleCurtains('cortinas')">
+    </div>
+    <div class="col-6 col-md-4 mb-4">
+        <h6 class="text-center">Alarma de la casa</h6>
+        <img id="alarma" src="off.png" alt="Desactivada" class="mx-auto d-block" onclick="toggleAlarm('alarma')">
+    </div>
+    <div class="col-6 col-md-4 mb-4">
+        <h6 class="text-center">Cámaras de seguridad</h6>
+        <img id="camaras" src="off.png" alt="Apagadas" class="mx-auto d-block" onclick="toggleCameras('camaras')">
     </div>
 </div>
 
 
+    <center>
+    <a href="../deteccion/index.html" class="btn btn-primary mt-3">Ir a deteccion</a>
+    </center>
 
     <!-- Pie de página -->
-    <footer class="footer bg-dark fixed-bottom">
-        <div class="container text-center text-white">
-            <span class="text-muted">© 2024 Mi Aplicación Adriel E. Lorenzo</span>
+    <footer class="footer fixed-bottom">
+        <div class="container text-center">
+            <span>© 2024 Mi Aplicación Adriel E. Lorenzo</span>
         </div>
     </footer>
 
