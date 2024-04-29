@@ -66,13 +66,13 @@ const processCommand = (result) => {
     const controlTexto = document.getElementById("lastOrderText"); 
 
     switch (true) {
-        case lowerCaseResult.includes("enciende la luz de la sala"):
-            controlTexto.innerText = "Enciende la luz de la sala";
-            toggleLightImage('luzSala', 'on.png');
+        case lowerCaseResult.includes("encender la luz de la recámara"):
+            controlTexto.innerText = "Encender la luz de la recámara";
+            toggleLightImage('luzSala', 'img/on.png');
             break;
-        case lowerCaseResult.includes("apaga la luz de la sala"):
-            controlTexto.innerText = "Apaga la luz de la sala";
-            toggleLightImage('luzSala', 'off.png');
+        case lowerCaseResult.includes("apagar la luz de la recámara"):
+            controlTexto.innerText = "Apagar la luz de la recámara";
+            toggleLightImage('luzSala', 'img/off.png');
             break;
         case lowerCaseResult.includes("enciende las luces del jardín"):
             controlTexto.innerText = "Enciende las luces del jardín";
