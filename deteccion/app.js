@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
             EnviarOrden(fechaHora, "Apagar la luz de la recámara");
         } else if (result.includes("ir a monitoreo")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            window.location.href = '../monitoreo/index.html';
+            window.open('../monitoreo/index.html', '_blank');
         } else if (result.includes("enciende luz de sala")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
             EnviarOrden(fechaHora, "Encender la luz de la sala");

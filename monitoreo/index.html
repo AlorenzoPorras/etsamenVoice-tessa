@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,33 +10,72 @@
     <style>
         /* Estilos personalizados */
         body {
-            padding-top: 100px; /* Ajuste para el navbar */
-            padding-bottom: 100px; /* Ajuste para el footer */
-            background-color: #f8f9fa; /* Color de fondo */
+            padding-top: 100px;
+            /* Ajuste para el navbar */
+            padding-bottom: 100px;
+            /* Ajuste para el footer */
+            background-color: #f8f9fa;
+            /* Color de fondo */
         }
+
         .container {
-            max-width: 1000px; /* Ancho máximo del contenido */
-            margin: auto; /* Centrar el contenido */
+            max-width: 1000px;
+            /* Ancho máximo del contenido */
+            margin: auto;
+            /* Centrar el contenido */
         }
+
         .mb-4 {
-            margin-bottom: 1.5rem; /* Espacio entre las columnas */
+            margin-bottom: 1.5rem;
+            /* Espacio entre las columnas */
         }
+
         .footer {
-            background-color: #343a40; /* Color de fondo del footer */
-            color: #ffffff; /* Color del texto del footer */
-            padding: 10px 0; /* Espaciado interno del footer */
+            background-color: #343a40;
+            /* Color de fondo del footer */
+            color: #ffffff;
+            /* Color del texto del footer */
+            padding: 10px 0;
+            /* Espaciado interno del footer */
         }
+
         .footer span {
-            font-size: 0.9rem; /* Tamaño de fuente del texto del footer */
+            font-size: 0.9rem;
+            /* Tamaño de fuente del texto del footer */
+        }
+
+        .image-container {
+            width: 100px;
+            /* Ancho deseado */
+            height: 100px;
+            /* Altura deseada */
+            overflow: hidden;
+            /* Evita que la imagen se salga del contenedor */
+            margin: 0 auto;
+            /* Centra horizontalmente */
+        }
+
+        .device-image {
+            width: 100%;
+            /* Ocupa todo el ancho disponible */
+            height: auto;
+            /* Se ajusta automáticamente a la proporción original */
+            display: block;
+            /* Evita el espacio adicional debajo de la imagen */
+        }
+        .foco {
+            width: 100%;
         }
     </style>
 </head>
+
 <body>
     <!-- Encabezado -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Tessa</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="#">2B</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -55,27 +95,53 @@
 
         <!-- Representación visual de las órdenes -->
         <div class="row mt-3">
+
             <div class="col-6 col-md-4 mb-4">
                 <h6 class="text-center">Luz de la recámara</h6>
+                <div class="image-container">
+                    <img id="luzRecamara" src="img/off.jpg" class="foco">
+                </div>
             </div>
+
             <div class="col-6 col-md-4 mb-4">
                 <h6 class="text-center">Luz de la sala</h6>
-                
+                <div class="image-container">
+                <img id="luzSala" src="img/off.jpg" class="foco">
+                </div>
             </div>
+
             <div class="col-6 col-md-4 mb-4">
                 <h6 class="text-center">Luces del jardín</h6>
+                <div class="image-container">
+                <img id="lucesJardin" src="img/off.jpg" alt="Apagado" class="foco">
             </div>
+            </div>
+
             <div class="col-6 col-md-4 mb-4">
                 <h6 class="text-center">Ventilador</h6>
+                <div class="image-container">
+                <img id="ventilador" src="img/venton.png" alt="Apagado" class="foco">
             </div>
+            </div>
+
             <div class="col-6 col-md-4 mb-4">
                 <h6 class="text-center">Cortinas</h6>
+                <div class="image-container">
+                <img id="cortinas" src="img/cortinasoff.png" alt="Cerradas" class="mx-auto d-block">
+            </div>
             </div>
             <div class="col-6 col-md-4 mb-4">
                 <h6 class="text-center">Alarma de la casa</h6>
+                <div class="image-container">
+                <img id="alarma" src="img/alarmaoff.png" alt="Desactivada" class="mx-auto d-block">
+                <audio id="alarmas" src="alarma-puerta.mp3"></audio>
+            </div>
             </div>
             <div class="col-6 col-md-4 mb-4">
                 <h6 class="text-center">Cámaras de seguridad</h6>
+                <div class="image-container">
+                <img id="camaras" src="img/camera_off.png" alt="Apagadas" class="mx-auto d-block">
+                </div>
             </div>
         </div>
     </div>
@@ -95,4 +161,5 @@
     <!-- Agregamos la referencia al archivo JavaScript personalizado -->
     <script type="module" src="main.js"></script>
 </body>
+
 </html>

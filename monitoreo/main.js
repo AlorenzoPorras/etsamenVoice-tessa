@@ -51,81 +51,67 @@ const obtenerData = async () => {
     }
 }
 
+
+const luzRecamara = document.getElementById('luzRecamara')
+const luzJardin = document.getElementById('luzJardin')
+const luzSala = document.getElementById('luzSala')
+
+const closeCurtains = () => {
+    // Cambiar el src a la versión animada del GIF
+    cortinas.src = 'img/cortinas_cerrar1.gif';
+
+    // Después de un tiempo, revertir el src a la versión estática
+    setTimeout(() => {
+        cortinas.src = 'img/cortinas_cerradas.png';
+    }, 1000); // Cambia 5000 por el tiempo de duración del GIF en milisegundos
+}
+
+const cortinas = document.getElementById('cortinas')
+const alarma = document.getElementById('alarma')
+const alarmas = document.getElementById('alarmas')
+
+const camaras = document.getElementById('camaras')
+
 const processCommand = (result) => {
     try {
-        const lowerCaseResult = result.toLowerCase();
-        const controlTexto = document.getElementById("lastOrderText");
-
-    switch (true) {
-        case lowerCaseResult.includes("encender la luz de la recámara"):
-            controlTexto.innerText = "Encender la luz de la recámara";
-            toggleLightImage('luzSala', 'img/on.png');
-            break;
-        case lowerCaseResult.includes("apagar la luz de la recámara"):
-            controlTexto.innerText = "Apagar la luz de la recámara";
-            toggleLightImage('luzSala', 'img/off.png');
-            break;
-        case lowerCaseResult.includes("enciende las luces del jardín"):
-            controlTexto.innerText = "Enciende las luces del jardín";
-            toggleLightImage('lucesJardin', 'on.png');
-            break;
-        case lowerCaseResult.includes("apaga las luces del jardín"):
-            controlTexto.innerText = "Apaga las luces del jardín";
-            toggleLightImage('lucesJardin', 'off.png');
-            break;
-        case lowerCaseResult.includes("enciende el ventilador"):
-            controlTexto.innerText = "Enciende el ventilador";
-            toggleLightImage('ventilador', 'on.png');
-            break;
-        case lowerCaseResult.includes("apaga el ventilador"):
-            controlTexto.innerText = "Apaga el ventilador";
-            toggleLightImage('ventilador', 'off.png');
-            break;
-        case lowerCaseResult.includes("abre las cortinas"):
-            controlTexto.innerText = "Abre las cortinas";
-            toggleCurtainsImage('cortinas', 'abiertas.png');
-            break;
-        case lowerCaseResult.includes("cierra las cortinas"):
-            controlTexto.innerText = "Cierra las cortinas";
-            toggleCurtainsImage('cortinas', 'cerradas.png');
-            break;
-        case lowerCaseResult.includes("activa la alarma de la casa"):
-            controlTexto.innerText = "Activa la alarma de la casa";
-            playAlarmSound('activada.mp3');
-            break;
-        case lowerCaseResult.includes("desactiva la alarma de la casa"):
-            controlTexto.innerText = "Desactiva la alarma de la casa";
-            playAlarmSound('desactivada.mp3');
-            break;            
-        case lowerCaseResult.includes("enciende las cámaras de seguridad"):
-            controlTexto.innerText = "Enciende las cámaras de seguridad";
-            toggleCamerasImage('camaras', 'encendidas.png');
-            break;
-        case lowerCaseResult.includes("apaga las cámaras de seguridad"):
-            controlTexto.innerText = "Apaga las cámaras de seguridad";
-            toggleCamerasImage('camaras', 'apagadas.png');
-            break;
-            default:
-                controlTexto.innerText = "Comando no reconocido";
-                break;
+        
+        if ( result === 'Encender la luz de la recámara' ){
+            luzRecamara.setAttribute('src', 'img/on.jpg')    
         }
-    } catch (error) {
+        if ( result === 'Apagar la luz de la recámara' ){
+            luzRecamara.setAttribute('src', 'img/off.jpg') 
+        }
+        if ( result === 'Enciende las luces del jardín' ){
+            luzJardin.setAttribute('src', 'img/on.jpg') 
+        }
+        if ( result === 'Apaga las luces del jardín' ){
+            luzJardin.setAttribute('src', 'img/off.jpg') 
+        }
+        if ( result === 'Enciende el ventilador' ){
+            luzRecamara.setAttribute('src', 'img/ventoff.gif') 
+        }
+        if ( result === 'Apaga el ventilador' ){
+            luzRecamara.setAttribute('src', 'img/venton.png') 
+        }
+
+        if ( result === 'Activa la alarma de la casa' ){
+            luzRecamara.setAttribute('src', 'img/alarmaon.gif') 
+        }
+        if ( result === 'Desactiva la alarma de la casa' ){
+            luzRecamara.setAttribute('src', 'img/alarmaoff.png') 
+        }
+        if ( result === 'Enciende las cámaras de seguridad' ){
+            luzRecamara.setAttribute('src', 'img/camera_on.gif') 
+        }
+        if ( result === 'Apaga las cámaras de seguridad' ){
+            luzRecamara.setAttribute('src', 'img/camera_off.png') 
+        }
+        } catch (error) {
         console.error('Error al procesar el comando:', error);
+    
     }
 };
 
-const toggleLightImage = (elementId, imageName) => {
-    try {
-        const imageElement = document.getElementById(elementId);
-        if (imageElement) {
-            imageElement.src = imageName;
-        } else {
-            console.error(`Elemento con ID ${elementId} no encontrado`);
-        }
-    } catch (error) {
-        console.error('Error al cambiar la imagen:', error);
-    }
-};
 
 // Iniciar la función para mostrar la orden y establecer la frecuencia de actualización
 mostrarOrden();
