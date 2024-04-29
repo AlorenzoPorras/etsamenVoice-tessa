@@ -74,16 +74,17 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if (result.includes("cierra las cortinas")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
             EnviarOrden(fechaHora, "Cerrar las cortinas");
+            
         } else if (result.includes("activa la alarma")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            obtenerUltimoUsuarioYEnviarOrden(fechaHora, "Activar la alarma de la casa");
+            EnviarOrden(fechaHora, "Activar la alarma de la casa");
         } else if (result.includes("desactiva la alarma")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
             EnviarOrden(fechaHora, "Desactivar la alarma de la casa");
-        } else if (result.includes("enciende las camaras")) {
+        } else if (result.includes("enciende las cámaras")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
             EnviarOrden(fechaHora, "Encender las cámaras de seguridad");
-        } else if (result.includes("apaga las camaras")) {
+        } else if (result.includes("apaga las cámaras")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
             EnviarOrden(fechaHora, "Apagar las cámaras de seguridad");
         }
