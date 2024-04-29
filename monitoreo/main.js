@@ -58,18 +58,18 @@ const luzSala = document.getElementById('luzSala')
 
 const closeCurtains = () => {
     // Cambiar el src a la versión animada del GIF
-    cortinas.src = 'img/cortinas_cerrar1.gif';
+    cortinas.src = 'img/cortinason.gif';
 
     // Después de un tiempo, revertir el src a la versión estática
     setTimeout(() => {
-        cortinas.src = 'img/cortinas_cerradas.png';
+        cortinas.src = 'img/cortinasoff.png';
     }, 1000); // Cambia 5000 por el tiempo de duración del GIF en milisegundos
 }
 
 const cortinas = document.getElementById('cortinas')
 const alarma = document.getElementById('alarma')
 const alarmas = document.getElementById('alarmas')
-
+const ventilador = document.getElementById('ventilador')
 const camaras = document.getElementById('camaras')
 
 const processCommand = (result) => {
@@ -88,23 +88,23 @@ const processCommand = (result) => {
             luzJardin.setAttribute('src', 'img/off.jpg') 
         }
         if ( result === 'Enciende el ventilador' ){
-            luzRecamara.setAttribute('src', 'img/ventoff.gif') 
+            ventilador.setAttribute('src', 'img/ventoff.gif') 
         }
         if ( result === 'Apaga el ventilador' ){
-            luzRecamara.setAttribute('src', 'img/venton.png') 
+            ventilador.setAttribute('src', 'img/venton.png') 
         }
 
         if ( result === 'Activa la alarma de la casa' ){
-            luzRecamara.setAttribute('src', 'img/alarmaon.gif') 
+            alarma.setAttribute('src', 'img/alarmaon.gif') 
         }
         if ( result === 'Desactiva la alarma de la casa' ){
-            luzRecamara.setAttribute('src', 'img/alarmaoff.png') 
+            alarma.setAttribute('src', 'img/alarmaoff.png') 
         }
         if ( result === 'Enciende las cámaras de seguridad' ){
-            luzRecamara.setAttribute('src', 'img/camera_on.gif') 
+            camaras.setAttribute('src', 'img/camera_on.gif') 
         }
         if ( result === 'Apaga las cámaras de seguridad' ){
-            luzRecamara.setAttribute('src', 'img/camera_off.png') 
+            camaras.setAttribute('src', 'img/camera_off.png') 
         }
         } catch (error) {
         console.error('Error al procesar el comando:', error);
