@@ -31,7 +31,6 @@ window.onload = function() {
                 "user": user,
                 "fecha-hora": mexicoCityTime,
                 "id": "1",
-                "order": ""
             };
             fetch(url, {
                 method: 'POST',

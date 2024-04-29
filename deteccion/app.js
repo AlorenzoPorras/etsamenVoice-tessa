@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Obtener referencias a los elementos HTML necesarios
     const orderResultDiv = document.getElementById('orderResult');
-    const usuario = localStorage.getItem('usuarioNombre') || "Usuario Desconocido"; // Obtiene el nombre del usuario desde localStorage
     const fechaHora = obtenerFechaHoraMexico();
 
     // Función para iniciar el reconocimiento de voz
@@ -18,8 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 const result = event.results[0][0].transcript.toLowerCase();
                 console.log('Orden identificada:', result);
 
-                // Verificar si la orden contiene la palabra clave "Tessa"
-                if (result.includes("tesa")) {
+                // Verificar si la orden contiene la palabra clave "2B"
+                if (result.includes("2b")) {
                     // Procesar la orden identificada
                     processCommand(result);
                 }
@@ -44,17 +43,80 @@ document.addEventListener('DOMContentLoaded', function () {
     function processCommand(result) {
         if (result.includes("enciende luz de recámara")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            insertarJson(usuario, fechaHora, "Encender la luz de la recámara");
+            EnviarOrden(fechaHora, "Encender la luz de la recámara");
         } else if (result.includes("apaga luz de recámara")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            insertarJson(usuario, fechaHora, "Apagar la luz de la recámara");
+            EnviarOrden(fechaHora, "Apagar la luz de la recámara");
         } else if (result.includes("ir a monitoreo")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            // Redireccionar a la página de monitoreo
             window.location.href = '../monitoreo/index.html';
+        } else if (result.includes("enciende luz de sala")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Encender la luz de la sala");
+        } else if (result.includes("apaga luz de sala")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Apagar la luz de la sala");
+        } else if (result.includes("enciende luz del jardín")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Encender las luces del jardín");
+        } else if (result.includes("apaga luz del jardín")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Apagar las luces del jardín");
+        } else if (result.includes("enciende el ventilador")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Encender el ventilador");
+        } else if (result.includes("apaga el ventilador")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Apagar el ventilador");
+        } else if (result.includes("abre las cortinas")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Abrir las cortinas");
+        } else if (result.includes("cierra las cortinas")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Cerrar las cortinas");
+        } else if (result.includes("activa la alarma")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            obtenerUltimoUsuarioYEnviarOrden(fechaHora, "Activar la alarma de la casa");
+        } else if (result.includes("desactiva la alarma")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Desactivar la alarma de la casa");
+        } else if (result.includes("enciende las camaras")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Encender las cámaras de seguridad");
+        } else if (result.includes("apaga las camaras")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Apagar las cámaras de seguridad");
         }
+    }
 
-        // Agrega más condiciones según sea necesario para otros comandos
+    // Función para obtener la fecha y hora actual en México
+    function obtenerFechaHoraMexico() {
+        const fechaHoraActual = new Date();
+        const options = { timeZone: 'America/Mexico_City' };
+        return fechaHoraActual.toLocaleString('es-MX', options);
+    }
+
+    // Función para obtener el último usuario registrado y enviar la orden
+    function EnviarOrden(fechaHora, orden) {
+        fetch('https://6614da0e2fc47b4cf27d3ce0.mockapi.io/Tessa', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al obtener los datos');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Obtener el último usuario registrado
+            const ultimoUsuario = data[data.length - 1].user;
+            // Enviar la orden con el último usuario
+            insertarJson(ultimoUsuario, fechaHora, orden);
+        })
+        .catch(error => console.error('Error:', error));
     }
 
     // Función para enviar los datos a la API
@@ -64,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ usuario, fechaHora, orden })
+            body: JSON.stringify({ user: usuario, fechaHora, orden })
         })
         .then(response => {
             if (!response.ok) {
@@ -74,13 +136,6 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(data => console.log('Subido exitosamente:', data))
         .catch(error => console.error('Error:', error));
-    }
-
-    // Función para obtener la fecha y hora actual en México
-    function obtenerFechaHoraMexico() {
-        const fechaHoraActual = new Date();
-        const options = { timeZone: 'America/Mexico_City' };
-        return fechaHoraActual.toLocaleString('es-MX', options);
     }
 
     // Iniciar el ciclo de reconocimiento de voz automáticamente
