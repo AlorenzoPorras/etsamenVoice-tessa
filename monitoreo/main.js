@@ -1,69 +1,60 @@
 let ultimaIdEjecutada = 0; // Variable para almacenar la ID de la última orden ejecutada
 
 const mostrarOrden = async () => {
-    const tagOrden = document.getElementById("lastOrderText");
-    const orden = await ultimaOrden();
-    
-    // Verificar si la ID de la orden recibida es diferente a la ID de la última orden ejecutada
-    if (orden.id !== ultimaIdEjecutada) {
-        // Actualizar la ID de la última orden ejecutada
-        ultimaIdEjecutada = orden.id;
-        // Ejecutar la orden
-        processCommand(orden.ingresos);
+    try {
+        const tagOrden = document.getElementById("lastOrderText");
+        const orden = await ultimaOrden();
+
+        // Verificar si la orden recibida es diferente a la última orden ejecutada
+        if (orden && orden.id && orden.id !== ultimaIdEjecutada) {
+            // Actualizar la ID de la última orden ejecutada
+            ultimaIdEjecutada = orden.id;
+            // Ejecutar la orden
+            processCommand(orden.orden);
+        }
+
+        tagOrden.innerText = orden.orden;
+    } catch (error) {
+        console.error('Error al mostrar la orden:', error);
     }
-    
-    tagOrden.innerText = orden.ingresos;
 }
 
 const ultimaOrden = async () => {
-    const json = await obtenerData();
-
-    // Encontrar la ID más alta
-    let ultimaId = 0;
-    json.forEach(item => {
-        if (parseInt(item.id) > ultimaId) {
-            ultimaId = parseInt(item.id);
-        }
-    });
-
-    // Encontrar el registro con la ID más alta
-    const ultimaOrden = json.find(item => parseInt(item.id) === ultimaId);
-
-    // Retornar el registro completo
-    return ultimaOrden;
+    try {
+        const json = await obtenerData();
+        // Ordenar los datos por ID de manera descendente
+        json.sort((a, b) => b.id - a.id);
+        // Tomar el primer elemento (última orden)
+        const ultimaOrden = json[0];
+        return ultimaOrden;
+    } catch (error) {
+        console.error('Error al obtener la última orden:', error);
+        throw error;
+    }
 }
 
-mostrarOrden();
-
-setInterval(mostrarOrden, 1000); // Reinicia cada 1 segundo
-
-async function obtenerData() {
-    return new Promise((resolve, reject) => {
-        fetch('https://6614da0e2fc47b4cf27d3ce0.mockapi.io/Tessa', {
+const obtenerData = async () => {
+    try {
+        const response = await fetch('https://6614da0e2fc47b4cf27d3ce0.mockapi.io/Tessa', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('No se pudo obtener la respuesta de la API');
-            }
-            return response.json();
-        })
-        .then(data => {
-            resolve(data);
-        })
-        .catch(error => {
-            console.error('Error al obtener datos:', error);
-            reject(error);
         });
-    });
+        if (!response.ok) {
+            throw new Error('No se pudo obtener la respuesta de la API');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error al obtener datos:', error);
+        throw error;
+    }
 }
 
 const processCommand = (result) => {
-    let lowerCaseResult = result.toLowerCase();
-    const controlTexto = document.getElementById("lastOrderText"); 
+    try {
+        const lowerCaseResult = result.toLowerCase();
+        const controlTexto = document.getElementById("lastOrderText");
 
     switch (true) {
         case lowerCaseResult.includes("encender la luz de la recámara"):
@@ -114,13 +105,28 @@ const processCommand = (result) => {
             controlTexto.innerText = "Apaga las cámaras de seguridad";
             toggleCamerasImage('camaras', 'apagadas.png');
             break;
-        default:
-            controlTexto.innerText = "Comando no reconocido";
-            break;
+            default:
+                controlTexto.innerText = "Comando no reconocido";
+                break;
+        }
+    } catch (error) {
+        console.error('Error al procesar el comando:', error);
     }
 };
 
 const toggleLightImage = (elementId, imageName) => {
-    const imageElement = document.getElementById(elementId);
-    imageElement.src = imageName;
+    try {
+        const imageElement = document.getElementById(elementId);
+        if (imageElement) {
+            imageElement.src = imageName;
+        } else {
+            console.error(`Elemento con ID ${elementId} no encontrado`);
+        }
+    } catch (error) {
+        console.error('Error al cambiar la imagen:', error);
+    }
 };
+
+// Iniciar la función para mostrar la orden y establecer la frecuencia de actualización
+mostrarOrden();
+setInterval(mostrarOrden, 1000); // Actualizar cada 1 segundo
