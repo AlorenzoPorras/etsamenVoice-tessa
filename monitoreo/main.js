@@ -55,20 +55,10 @@ const obtenerData = async () => {
 const luzRecamara = document.getElementById('luzRecamara')
 const luzJardin = document.getElementById('luzJardin')
 const luzSala = document.getElementById('luzSala')
-
-const closeCurtains = () => {
-    // Cambiar el src a la versión animada del GIF
-    cortinas.src = 'img/cortinason.gif';
-
-    // Después de un tiempo, revertir el src a la versión estática
-    setTimeout(() => {
-        cortinas.src = 'img/cortinasoff.png';
-    }, 1000); // Cambia 5000 por el tiempo de duración del GIF en milisegundos
-}
-
 const cortinas = document.getElementById('cortinas')
 const alarma = document.getElementById('alarma')
 const alarmas = document.getElementById('alarmas')
+alarmas.loop = true;
 const ventilador = document.getElementById('ventilador')
 const camaras = document.getElementById('camaras')
 
@@ -81,36 +71,74 @@ const processCommand = (result) => {
         if ( result === 'Apagar la luz de la recámara' ){
             luzRecamara.setAttribute('src', 'img/off.jpg') 
         }
-        if ( result === 'Enciende las luces del jardín' ){
+        if ( result === 'Encender la luz de la sala' ){
+            luzSala.setAttribute('src', 'img/on.jpg')    
+        }
+        if ( result === 'Apagar la luz de la sala' ){
+            luzSala.setAttribute('src', 'img/off.jpg') 
+        }
+        if ( result === 'Encender las luces del jardín' ){
             luzJardin.setAttribute('src', 'img/on.jpg') 
         }
-        if ( result === 'Apaga las luces del jardín' ){
+        if ( result === 'Apagar las luces del jardín' ){
             luzJardin.setAttribute('src', 'img/off.jpg') 
         }
-        if ( result === 'Enciende el ventilador' ){
-            ventilador.setAttribute('src', 'img/ventoff.gif') 
+
+        if ( result === 'Encender el ventilador' ){
+            ventilador.setAttribute('src', 'img/venton.gif') 
         }
-        if ( result === 'Apaga el ventilador' ){
-            ventilador.setAttribute('src', 'img/venton.png') 
+        if ( result === 'Apagar el ventilador' ){
+            ventilador.setAttribute('src', 'img/ventoff.png') 
         }
 
-        if ( result === 'Activa la alarma de la casa' ){
+        if (result === 'Abrir las cortinas') {
+            openCurtains();
+        }
+        if (result === 'Cerrar las cortinas') {
+            closeCurtains();
+        }
+
+        if ( result === 'Activar la alarma de la casa' ){
             alarma.setAttribute('src', 'img/alarmaon.gif') 
+            alarmas.play();
         }
         if ( result === 'Desactiva la alarma de la casa' ){
             alarma.setAttribute('src', 'img/alarmaoff.png') 
+            alarmas.pause();
         }
-        if ( result === 'Enciende las cámaras de seguridad' ){
-            camaras.setAttribute('src', 'img/camera_on.gif') 
+
+        if ( result === 'Encender las cámaras de seguridad' ){
+            camaras.setAttribute('src', 'img/camera_on.png') 
         }
-        if ( result === 'Apaga las cámaras de seguridad' ){
+        if ( result === 'Apagar las cámaras de seguridad' ){
             camaras.setAttribute('src', 'img/camera_off.png') 
         }
         } catch (error) {
         console.error('Error al procesar el comando:', error);
     
     }
-};
+}
+
+
+const openCurtains = () => {
+    // Cambiar el src a la versión animada del GIF
+    cortinas.src = 'img/cortinason.gif';
+
+    // Después de un tiempo, revertir el src a la versión estática
+    setTimeout(() => {
+        cortinas.src = 'img/cortinas_on.png';
+    }, 543); // Cambia 5000 por el tiempo de duración del GIF en milisegundos
+}
+
+const closeCurtains = () => {
+    // Cambiar el src a la versión animada del GIF
+    cortinas.src = 'img/cortinas_off2.gif';
+
+    // Después de un tiempo, revertir el src a la versión estática
+    setTimeout(() => {
+        cortinas.src = 'img/cortinas_off.png';
+    }, 1000); // Cambia 5000 por el tiempo de duración del GIF en milisegundos
+}
 
 
 // Iniciar la función para mostrar la orden y establecer la frecuencia de actualización

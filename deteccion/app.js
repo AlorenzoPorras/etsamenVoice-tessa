@@ -77,12 +77,16 @@ document.addEventListener('DOMContentLoaded', function () {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
             EnviarOrden(fechaHora, "Cerrar las cortinas");
             
+        
+
+        } else if (result.includes("desactiva la alarma")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Desactiva la alarma de la casa");
+
         } else if (result.includes("activa la alarma")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
             EnviarOrden(fechaHora, "Activar la alarma de la casa");
-        } else if (result.includes("desactiva la alarma")) {
-            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            EnviarOrden(fechaHora, "Desactivar la alarma de la casa");
+
         } else if (result.includes("enciende las cámaras")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
             EnviarOrden(fechaHora, "Encender las cámaras de seguridad");
