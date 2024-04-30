@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         } else if (result.includes("ir a monitoreo")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            window.open('../monitoreo/gateway.html', '_blank');
+            window.open('https://asdnaindafi1291392312nsd.github.io/examenVoice-2b/', '_blank');
 
         } else if (result.includes("enciende luz de sala")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
