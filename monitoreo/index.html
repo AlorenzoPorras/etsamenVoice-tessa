@@ -54,6 +54,18 @@
             margin: 0 auto;
             /* Centra horizontalmente */
         }
+        .image-container2 {
+           width: 100%;
+           max-width: 800px; /* Ajusta el ancho máximo según tus necesidades */
+           margin: 0 auto; /* Centra horizontalmente */
+           overflow: hidden; /* Evita que la imagen se desborde del contenedor */
+        }
+
+        .image-container img {
+          width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+          height: auto; /* Se ajusta automáticamente la altura para mantener la proporción original */
+         display: block; /* Elimina el espacio adicional debajo de la imagen */
+       }
 
         .device-image {
             width: 100%;
@@ -63,6 +75,20 @@
             display: block;
             /* Evita el espacio adicional debajo de la imagen */
         }
+        .position-relative {
+            position: relative;
+        }
+
+        .position-absolute {
+            position: absolute;
+            transform: translate(140px, 170px);
+            width: 40px;
+            height: 40px;
+
+        /* Mueve la imagen 50px hacia abajo */
+        /* Mueve la imagen 100px hacia la derecha */
+        }
+
         .foco {
             width: 100%;
         }
@@ -93,6 +119,20 @@
             <p id="lastOrderText"></p>
         </div>
 
+    <!-- Plano -->
+        <div class="container mt-5">
+            <h2 class="text-center">Plano de la casa</h2>
+            <div class="border border-md p-3 text-center">
+        <!-- Contenedor del plano -->
+            <div class="image-container2 position-relative">
+            <img src="img/plano.jpg" class="img-fluid" alt="Plano de la casa">
+        <!-- Imágenes superpuestas -->
+            <img id="luzRecamara" src="img/off.jpg" class="position-absolute" style="top: 50px; left: 100px;">
+                </div>
+            </div>
+        </div>        
+
+        
         <!-- Representación visual de las órdenes -->
         <div class="row mt-3">
 
