@@ -1,6 +1,6 @@
 let recognition;
 const validPINs = {
-    "0271": "Adriel E. Lorenzo",
+    "2271": "Adriel E. Lorenzo",
     "4401": "Victor M. Pinedo"
 };
 
