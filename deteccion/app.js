@@ -9,16 +9,16 @@ document.addEventListener('DOMContentLoaded', function () {
         if ('webkitSpeechRecognition' in window) {
             // Crear una nueva instancia de reconocimiento de voz
             const recognition = new webkitSpeechRecognition();
-            recognition.lang = 'en-US'; // Establecer el idioma del reconocimiento
+            recognition.lang = 'es-ES'; // Establecer el idioma del reconocimiento
             recognition.continuous = false; // No continua automáticamente
             recognition.interimResults = false; // No devuelve resultados intermedios
 
             recognition.onresult = function (event) {
                 const result = event.results[0][0].transcript.toLowerCase();
-                console.log('Identified order:', result);
+                console.log('Orden identificada:', result);
 
                 // Verificar si la orden contiene la palabra clave "2B"
-                if (result.includes("be")) {
+                if (result.includes("2b")) {
                     // Procesar la orden identificada
                     processCommand(result);
                 }
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
             recognition.onend = function () {
                 // Reiniciar automáticamente el reconocimiento de voz después de 2 segundos o inmediatamente después de procesar un comando
                 setTimeout(() => {
-                    console.log("Restarting recognition...");
+                    console.log("Reiniciando el reconocimiento...");
                     recognition.start();
                 }, 2000);
             };
@@ -35,62 +35,64 @@ document.addEventListener('DOMContentLoaded', function () {
             // Iniciar el reconocimiento de voz
             recognition.start();
         } else {
-            alert('Voice recognition is not supported by this browser.');
+            alert('El reconocimiento de voz no es soportado por este navegador.');
         }
     };
 
     // Función para procesar la orden identificada por voz
     function processCommand(result) {
-        if (result.includes("turn on bedroom light")) {
-            orderResultDiv.innerHTML = `<p>Identified order: <strong>${result}</strong></p>`;
-            sendOrder(fechaHora, "Turn on the bedroom light");
-        } else if (result.includes("turn off bedroom light")) {
-            orderResultDiv.innerHTML = `<p>Identified order: <strong>${result}</strong></p>`;
-            sendOrder(fechaHora, "Turn off the bedroom light");
+        if (result.includes("enciende luz de recámara")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Encender la luz de la recámara");
+        } else if (result.includes("apaga luz de recámara")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Apagar la luz de la recámara");
 
-        } else if (result.includes("go to monitoring")) {
-            orderResultDiv.innerHTML = `<p>Identified order: <strong>${result}</strong></p>`;
+        } else if (result.includes("ir a monitoreo")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
             window.open('https://asdnaindafi1291392312nsd.github.io/examenVoice-2b/', '_blank');
 
-        } else if (result.includes("turn on living room light")) {
-            orderResultDiv.innerHTML = `<p>Identified order: <strong>${result}</strong></p>`;
-            sendOrder(fechaHora, "Turn on the living room light");
-        } else if (result.includes("turn off living room light")) {
-            orderResultDiv.innerHTML = `<p>Identified order: <strong>${result}</strong></p>`;
-            sendOrder(fechaHora, "Turn off the living room light");
-        } else if (result.includes("turn on garden lights")) {
-            orderResultDiv.innerHTML = `<p>Identified order: <strong>${result}</strong></p>`;
-            sendOrder(fechaHora, "Turn on the garden lights");
-        } else if (result.includes("turn off garden lights")) {
-            orderResultDiv.innerHTML = `<p>Identified order: <strong>${result}</strong></p>`;
-            sendOrder(fechaHora, "Turn off the garden lights");
-        } else if (result.includes("turn on the fan")) {
-            orderResultDiv.innerHTML = `<p>Identified order: <strong>${result}</strong></p>`;
-            sendOrder(fechaHora, "Turn on the fan");
-        } else if (result.includes("turn off the fan")) {
-            orderResultDiv.innerHTML = `<p>Identified order: <strong>${result}</strong></p>`;
-            sendOrder(fechaHora, "Turn off the fan");
-        } else if (result.includes("open the curtains")) {
-            orderResultDiv.innerHTML = `<p>Identified order: <strong>${result}</strong></p>`;
-            sendOrder(fechaHora, "Open the curtains");
-        } else if (result.includes("close the curtains")) {
-            orderResultDiv.innerHTML = `<p>Identified order: <strong>${result}</strong></p>`;
-            sendOrder(fechaHora, "Close the curtains");
+        } else if (result.includes("enciende luz de sala")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Encender la luz de la sala");
+        } else if (result.includes("apaga luz de sala")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Apagar la luz de la sala");
+        } else if (result.includes("enciende luz del jardín")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Encender las luces del jardín");
+        } else if (result.includes("apaga luz del jardín")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Apagar las luces del jardín");
+        } else if (result.includes("enciende el ventilador")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Encender el ventilador");
+        } else if (result.includes("apaga el ventilador")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Apagar el ventilador");
+        } else if (result.includes("abre las cortinas")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Abrir las cortinas");
+        } else if (result.includes("cierra las cortinas")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Cerrar las cortinas");
+            
+        
 
-        } else if (result.includes("deactivate the alarm")) {
-            orderResultDiv.innerHTML = `<p>Identified order: <strong>${result}</strong></p>`;
-            sendOrder(fechaHora, "Deactivate the house alarm");
+        } else if (result.includes("desactiva la alarma")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Desactiva la alarma de la casa");
 
-        } else if (result.includes("activate the alarm")) {
-            orderResultDiv.innerHTML = `<p>Identified order: <strong>${result}</strong></p>`;
-            sendOrder(fechaHora, "Activate the house alarm");
+        } else if (result.includes("activa la alarma")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Activar la alarma de la casa");
 
-        } else if (result.includes("turn on the cameras")) {
-            orderResultDiv.innerHTML = `<p>Identified order: <strong>${result}</strong></p>`;
-            sendOrder(fechaHora, "Turn on the security cameras");
-        } else if (result.includes("turn off the cameras")) {
-            orderResultDiv.innerHTML = `<p>Identified order: <strong>${result}</strong></p>`;
-            sendOrder(fechaHora, "Turn off the security cameras");
+        } else if (result.includes("enciende las cámaras")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Encender las cámaras de seguridad");
+        } else if (result.includes("apaga las cámaras")) {
+            orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+            EnviarOrden(fechaHora, "Apagar las cámaras de seguridad");
         }
     }
 
@@ -98,11 +100,11 @@ document.addEventListener('DOMContentLoaded', function () {
     function obtenerFechaHoraMexico() {
         const fechaHoraActual = new Date();
         const options = { timeZone: 'America/Mexico_City' };
-        return fechaHoraActual.toLocaleString('en-US', options);
+        return fechaHoraActual.toLocaleString('es-MX', options);
     }
 
     // Función para obtener el último usuario registrado y enviar la orden
-    function sendOrder(fechaHora, orden) {
+    function EnviarOrden(fechaHora, orden) {
         fetch('https://6614da0e2fc47b4cf27d3ce0.mockapi.io/Tessa', {
             method: 'GET',
             headers: {
@@ -111,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Error getting data');
+                throw new Error('Error al obtener los datos');
             }
             return response.json();
         })
@@ -135,11 +137,11 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Error uploading');
+                throw new Error('Error al subir');
             }
             return response.json();
         })
-        .then(data => console.log('Successfully uploaded:', data))
+        .then(data => console.log('Subido exitosamente:', data))
         .catch(error => console.error('Error:', error));
     }
 
