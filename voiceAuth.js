@@ -1,6 +1,6 @@
 let recognition;
 const validPINs = {
-    "0071": "Adriel E. Lorenzo",
+    "0271": "Adriel E. Lorenzo",
     "4401": "Victor M. Pinedo"
 };
 
@@ -15,7 +15,8 @@ window.onload = function() {
     recognition = new webkitSpeechRecognition();
     recognition.continuous = false;
     recognition.interimResults = false;
-    recognition.lang = 'es-ES';
+    //recognition.lang = 'es-ES';
+    recognition.lang = 'en-US';
 
     recognition.onresult = function(event) {
         const speechResult = event.results[0][0].transcript.trim();
