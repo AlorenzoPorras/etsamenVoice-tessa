@@ -11,70 +11,72 @@
             background: linear-gradient(to bottom, #007bff 0%, #0056b3 100%);
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             color: #fff;
+            margin: 0;
         }
         .container {
             max-width: 800px;
+            width: 100%;
             padding: 30px;
             background-color: #ffffff;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             color: #000;
+            text-align: center;
+            margin: 20px 0;
         }
         .qr-container {
             margin-top: 20px;
             border: 1px solid #ccc;
             padding: 10px;
-            text-align: center;
         }
         .footer {
             background-color: #343a40;
             color: white;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
         }
-        @media (max-width: 768px) {
-            body {
-                padding: 20px;
-            }
-            .container {
-                padding: 15px;
-            }
-            .qr-container {
-                margin-top: 10px;
-                padding: 5px;
-            }
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
-    <a class="navbar-brand" href="#">Order Identification</a>
+    <a class="navbar-brand mx-auto" href="#">Order Identification</a>
 </nav>
 
-<div class="container mt-4 text-center">
-    <!-- Welcome message -->
-    <h4 id="welcomeMessage">Welcome</h4>
-    <h6>I am a virtual assistant that can help you operate different electronic devices. You can interact with me in the following way. The following voice commands are the keywords to use. Please note that you must say "2B" before each action.</h6>
-    <div id="orderResult" class="mt-3"></div>
-    <div class="mt-3"><p>Voice Command - <b>Turn on/off bedroom light</b> - Turns on/off the bedroom light (1 bulb)</p></div>
-    <div class="mt-3"><p>Voice Command - <b>Turn on/off living room light</b> - Turns on/off the living room light (1 bulb)</p></div>
-    <div class="mt-3"><p>Voice Command - <b>Turn on/off garden lights</b> - Turns on/off the garden lights (5 bulbs)</p></div>
-    <div class="mt-3"><p>Voice Command - <b>Turn on/off the fan</b> - Turns on/off the ceiling fan (1 ceiling fan)</p></div>
-    <div class="mt-3"><p>Voice Command - <b>Open/close the curtains</b> - Opens/closes the curtains (3 curtains)</p></div>
-    <div class="mt-3"><p>Voice Command - <b>Activate/deactivate the alarm</b> - Activates/deactivates the house alarm (1 alarm with siren)</p></div>
-    <div class="mt-3"><p>Voice Command - <b>Turn on/off the cameras</b> - Turns on/off the security cameras (3 surveillance cameras)</p></div>
-    <div class="mt-3"><p>Voice Command - <b>Go to monitoring</b> - Redirects to the monitoring page</p></div>
-    
-    <div class="qr-container">
-        <h4>QR Code for Access</h4>
-        <img src="qr-code.png" alt="QR Code" class="img-fluid" width="250" height="250">
+<div class="content-wrapper">
+    <div class="container mt-4">
+        <!-- Welcome message -->
+        <h4 id="welcomeMessage">Welcome</h4>
+        <h6>I am a virtual assistant that can help you operate different electronic devices. You can interact with me in the following way. The following voice commands are the keywords to use. Please note that you must say "2B" before each action.</h6>
+        <div id="orderResult" class="mt-3"></div>
+        <div class="mt-3"><p>Voice Command - <b>Turn on/off bedroom light</b> - Turns on/off the bedroom light (1 bulb)</p></div>
+        <div class="mt-3"><p>Voice Command - <b>Turn on/off living room light</b> - Turns on/off the living room light (1 bulb)</p></div>
+        <div class="mt-3"><p>Voice Command - <b>Turn on/off garden lights</b> - Turns on/off the garden lights (5 bulbs)</p></div>
+        <div class="mt-3"><p>Voice Command - <b>Turn on/off the fan</b> - Turns on/off the ceiling fan (1 ceiling fan)</p></div>
+        <div class="mt-3"><p>Voice Command - <b>Open/close the curtains</b> - Opens/closes the curtains (3 curtains)</p></div>
+        <div class="mt-3"><p>Voice Command - <b>Activate/deactivate the alarm</b> - Activates/deactivates the house alarm (1 alarm with siren)</p></div>
+        <div class="mt-3"><p>Voice Command - <b>Turn on/off the cameras</b> - Turns on/off the security cameras (3 surveillance cameras)</p></div>
+        <div class="mt-3"><p>Voice Command - <b>Go to monitoring</b> - Redirects to the monitoring page</p></div>
+        
+        <div class="qr-container">
+            <h4>QR Code for Access</h4>
+            <img src="qr-code.png" alt="QR Code" class="img-fluid" width="250" height="250">
+        </div>
     </div>
 </div>
 
-<footer class="footer mt-auto py-3 w-100">
-    <div class="container text-center">
+<footer class="footer mt-auto">
+    <div class="container">
         <p>Adriel E. Lorenzo Porras &copy; 2024</p>
     </div>
 </footer>
