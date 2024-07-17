@@ -43,10 +43,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function processCommand(result) {
         if (result.includes("enciende luz de recámara")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            EnviarOrden(fechaHora, "Encender la luz de la recámara");
+            EnviarOrden(fechaHora, "Turn on the bedroom light");
         } else if (result.includes("apaga luz de recámara")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            EnviarOrden(fechaHora, "Apagar la luz de la recámara");
+            EnviarOrden(fechaHora, "Turn off the bedroom light");
 
         } else if (result.includes("ir a monitoreo")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
@@ -54,45 +54,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
         } else if (result.includes("enciende luz de sala")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            EnviarOrden(fechaHora, "Encender la luz de la sala");
+            EnviarOrden(fechaHora, "Turn on the light in the room");
         } else if (result.includes("apaga luz de sala")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            EnviarOrden(fechaHora, "Apagar la luz de la sala");
+            EnviarOrden(fechaHora, "Turn off the light in the room");
         } else if (result.includes("enciende luz del jardín")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            EnviarOrden(fechaHora, "Encender las luces del jardín");
+            EnviarOrden(fechaHora, "Turn on the garden lights");
         } else if (result.includes("apaga luz del jardín")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            EnviarOrden(fechaHora, "Apagar las luces del jardín");
+            EnviarOrden(fechaHora, "Turn off the garden lights");
         } else if (result.includes("enciende el ventilador")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            EnviarOrden(fechaHora, "Encender el ventilador");
+            EnviarOrden(fechaHora, "Turn on the fan");
         } else if (result.includes("apaga el ventilador")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            EnviarOrden(fechaHora, "Apagar el ventilador");
+            EnviarOrden(fechaHora, "Turn off the fan");
         } else if (result.includes("abre las cortinas")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            EnviarOrden(fechaHora, "Abrir las cortinas");
+            EnviarOrden(fechaHora, "Open the curtains");
         } else if (result.includes("cierra las cortinas")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            EnviarOrden(fechaHora, "Cerrar las cortinas");
+            EnviarOrden(fechaHora, "Close the curtains");
             
         
 
         } else if (result.includes("desactiva la alarma")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            EnviarOrden(fechaHora, "Desactiva la alarma de la casa");
+            EnviarOrden(fechaHora, "Deactivate the house alarm");
 
         } else if (result.includes("activa la alarma")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            EnviarOrden(fechaHora, "Activar la alarma de la casa");
+            EnviarOrden(fechaHora, "Activate the house alarm");
 
         } else if (result.includes("enciende las cámaras")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            EnviarOrden(fechaHora, "Encender las cámaras de seguridad");
+            EnviarOrden(fechaHora, "Turn on security cameras");
         } else if (result.includes("apaga las cámaras")) {
             orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-            EnviarOrden(fechaHora, "Apagar las cámaras de seguridad");
+            EnviarOrden(fechaHora, "Turn off security cameras");
         }
     }
 
