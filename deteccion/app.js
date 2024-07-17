@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log('Identified order:', result);
 
                 // Verificar si la orden contiene la palabra clave "2B"
-                if (result.includes("2b")) {
+                if (result.includes("b")) {
                     // Procesar la orden identificada
                     processCommand(result);
                 }
