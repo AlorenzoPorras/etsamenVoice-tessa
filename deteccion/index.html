@@ -33,6 +33,18 @@
             background-color: #343a40;
             color: white;
         }
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            .container {
+                padding: 15px;
+            }
+            .qr-container {
+                margin-top: 10px;
+                padding: 5px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -44,8 +56,7 @@
 <div class="container mt-4 text-center">
     <!-- Welcome message -->
     <h4 id="welcomeMessage">Welcome</h4>
-    <h6> I am a virtual assistant that can help you operate different electronic devices. You can interact with me in the following way.<br>
-         The following voice commands are the keywords to use. Please note that you must say "2B" before each action.</h6>
+    <h6>I am a virtual assistant that can help you operate different electronic devices. You can interact with me in the following way. The following voice commands are the keywords to use. Please note that you must say "2B" before each action.</h6>
     <div id="orderResult" class="mt-3"></div>
     <div class="mt-3"><p>Voice Command - <b>Turn on/off bedroom light</b> - Turns on/off the bedroom light (1 bulb)</p></div>
     <div class="mt-3"><p>Voice Command - <b>Turn on/off living room light</b> - Turns on/off the living room light (1 bulb)</p></div>
