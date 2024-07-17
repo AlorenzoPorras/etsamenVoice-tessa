@@ -5,7 +5,9 @@ function updateWelcomeMessage() {
         .then(data => {
             const user = data[0].user; // Supongamos que el nombre de usuario está en la primera posición del array
             const welcomeMessage = document.getElementById('welcomeMessage');
-            welcomeMessage.textContent = `Hola ${user} Me presento de nuevo soy 2B.`; // Actualizar el contenido completo
+            //welcomeMessage.textContent = `Hola ${user} Me presento de nuevo soy 2B.`; // Actualizar el contenido completo
+            welcomeMessage.textContent = `Hello ${user}, let me introduce myself again—I'm 2B.`;
+
         })
         .catch(error => console.error('Error:', error));
 }
