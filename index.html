@@ -3,26 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesión por Voz</title>
+    <title>Autenticación por Voz</title>
     <!-- Agrega el CSS de Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Agrega jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 100px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            padding: 15px 30px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .text-center h2 {
+            font-weight: bold;
+            color: #343a40;
+        }
+        .text-center p.lead {
+            font-size: 1.25rem;
+            color: #6c757d;
+        }
+        #status {
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+    </style>
 </head>
-<body class="bg-light">
-    <div class="container">
-        <div class="py-5 text-center">
-            <h2>Autenticación por Voz</h2>
-            <p class="lead" id="promptText">Hola soy 2B. Para poder interactuar conmigo, presiona el botón y di tu PIN para ingresar.</p>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-md-8 order-md-1">
-                <button class="btn btn-primary btn-lg btn-block" onclick="startRecognition()">Reconocer Pin</button>
-                <p id="status" class="text-primary"></p>
-                <p id="error" class="text-danger"></p>
-            </div>
-        </div>
+<body>
+    <div class="container text-center">
+        <h2>Autenticación por Voz</h2>
+        <p class="lead" id="promptText">Hola, soy 2B. Para poder interactuar conmigo, presiona el botón y di tu PIN numérico para ingresar.</p>
+        <button class="btn btn-primary btn-lg" onclick="startRecognition()">Reconocer PIN</button>
+        <p id="status" class="text-primary"></p>
+        <p id="error" class="text-danger"></p>
     </div>
 
     <!-- Agrega el JS de Bootstrap -->
@@ -35,7 +64,7 @@
         // Texto a decir por la síntesis de voz
         const textToSay = 'Hola soy 2B. Para poder interactuar conmigo, presiona el botón y di tu PIN numérico para ingresar.';
         // Establecer el texto en el elemento del HTML
-        document.getElementById('promptText').textContent = textToSay;
+        document.getElementById('promptText').textContent = textToSay; 
     </script>
 </body>
 </html>
