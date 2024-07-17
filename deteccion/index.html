@@ -1,53 +1,68 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Identificación de Orden por Voz</title>
+    <title>Order Identification by Voice</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        body {
+            background: linear-gradient(to bottom, #007bff 0%, #0056b3 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: #000;
+        }
         .qr-container {
             margin-top: 20px;
             border: 1px solid #ccc;
             padding: 10px;
             text-align: center;
         }
+        .footer {
+            background-color: #343a40;
+            color: white;
+        }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Identificación de Orden</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+    <a class="navbar-brand" href="#">Order Identification</a>
 </nav>
 
-<div class="container mt-4">
-    <!-- Mensaje de bienvenida -->
-    <h4 id="welcomeMessage"></h4>
-    <h6> Soy una asistente virtual la cual te puede ayudar a operar diferentes aparatos electronicos de la siguiente manera puedes interactuar conmigo. <br>
-         Los siguientes comandos de voz son las palabras claves a utilizar. Cabe mencionar que antes de cada accion debes decir "2B"</h6>
-<div id="orderResult" class="mt-3"></div>
-    <div id="" class="mt-3"><p>Comando de voz - <b>Enciende/apaga luz de recamara</b>   - Enciende/apaga la luz de la recámara (1 foco)</p></div>
-    <div id="" class="mt-3"><p>Comando de voz - <b>Enciende/apaga luz de sala</b> - Enciende/apaga la luz de la sala (1 foco) </p></div>
-    <div id="" class="mt-3"><p>Comando de voz - <b>Enciende/apaga luz del jardin</b> - Enciende/apaga las luces del jardín (5 focos)</p></div>
-    <div id="" class="mt-3"><p>Comando de voz - <b>Enciende/apaga el ventilador</b> - Enciende/apaga el ventilador (1 ventilador de techo)</p></div>
-    <div id="" class="mt-3"><p>Comando de voz - <b>Abre/cierra las cortinas</b> - Abre/cierra las cortinas (3 cortinas)</p></div>
-    <div id="" class="mt-3"><p>Comando de voz - <b>Activa/desactiva la alarma</b> - Activa/desactiva la alarma de la casa (1 alarma con chicharra)</p></div>
-    <div id="" class="mt-3"><p>Comando de voz - <b>Enciende/apaga las camaras</b> - Enciende/apaga las cámaras de seguridad (3 cámaras de videovigilancia)</p></div>
-    <div id="" class="mt-3"><p>Comando de voz - <b>Ir a monitoreo</b> - Redirige a la pagina de monitoreo</p></div>
-</div>
+<div class="container mt-4 text-center">
+    <!-- Welcome message -->
+    <h4 id="welcomeMessage">Welcome</h4>
+    <h6> I am a virtual assistant that can help you operate different electronic devices. You can interact with me in the following way.<br>
+         The following voice commands are the keywords to use. Please note that you must say "2B" before each action.</h6>
+    <div id="orderResult" class="mt-3"></div>
+    <div class="mt-3"><p>Voice Command - <b>Turn on/off bedroom light</b> - Turns on/off the bedroom light (1 bulb)</p></div>
+    <div class="mt-3"><p>Voice Command - <b>Turn on/off living room light</b> - Turns on/off the living room light (1 bulb)</p></div>
+    <div class="mt-3"><p>Voice Command - <b>Turn on/off garden lights</b> - Turns on/off the garden lights (5 bulbs)</p></div>
+    <div class="mt-3"><p>Voice Command - <b>Turn on/off the fan</b> - Turns on/off the ceiling fan (1 ceiling fan)</p></div>
+    <div class="mt-3"><p>Voice Command - <b>Open/close the curtains</b> - Opens/closes the curtains (3 curtains)</p></div>
+    <div class="mt-3"><p>Voice Command - <b>Activate/deactivate the alarm</b> - Activates/deactivates the house alarm (1 alarm with siren)</p></div>
+    <div class="mt-3"><p>Voice Command - <b>Turn on/off the cameras</b> - Turns on/off the security cameras (3 surveillance cameras)</p></div>
+    <div class="mt-3"><p>Voice Command - <b>Go to monitoring</b> - Redirects to the monitoring page</p></div>
     
-    <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6 qr-container">
-            <h4>Código QR para Acceso</h4>
-            <img src="qr-code.png" alt="Código QR" class="img-fluid" width="250" height="250"><br>
-         </div>
+    <div class="qr-container">
+        <h4>QR Code for Access</h4>
+        <img src="qr-code.png" alt="QR Code" class="img-fluid" width="250" height="250">
     </div>
-</div><br>
+</div>
 
-<footer class="footer mt-auto py-3 bg-dark text-white">
+<footer class="footer mt-auto py-3 w-100">
     <div class="container text-center">
         <p>Adriel E. Lorenzo Porras &copy; 2024</p>
     </div>
